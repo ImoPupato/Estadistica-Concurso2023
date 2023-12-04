@@ -1,3 +1,18 @@
+## Ciclo PPDAC
+
+<p align = "center">
+<img src="https://github.com/ImoPupato/Estadistica-Concurso2023/blob/main/Ciclo%20ppdac.PNG">
+</p>
+
+
+Planteo del Problema, Planificación del Estudio Estadístico, Recolección de Datos, Análisis de los Datos, Elaboración de Conclusiones.
+_(Wild & Pfannkuch, 1999)_
+
+Cuando los datos provienen de un censo o estudio poblacional, luego de aplicar herramientas del análisis descriptivo _(Etapa A)_ se pasa directamente a las conclusiones _(Etapa C)_.  
+
+En el caso de contar con una muestra, los datos están incompletos en el sentido que no se cuenta con información de toda la población y, por ese motivo, a los resultados obtenidos del análisis descriptivo se los debe tomar como preliminares. El análisis se completa con herramientas inferenciales para generalizar las conclusiones a la población de referencia _(Etapa C)_. Estas herramientas, que también se asocian al análisis de los datos _(Etapa A)_.  
+En esta clase, a través de un ejemplo, aplicaremos las principales herramientas de análisis descriptivo univariado que hemos abordado en la teoría.
+
 ## Situación problema
 Para certificar normas de calidad, una empresa controla periódicamente ciertas componentes electrónicas que fabrica. Una de las características que se requiere evaluar es su longitud (medida en mm).  
 Interesa tener información sobre la **proporción** de esas componentes cuya longitud es menor a 80 mm.  
