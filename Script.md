@@ -10,6 +10,7 @@ En el caso de contar con una **muestra**, como los datos están incompletos en e
   
 En esta clase, a través de un ejemplo, aplicaremos las principales herramientas de análisis descriptivo univariado que hemos abordado en la teoría.
 
+---
 ## Situación problema
 Para certificar normas de calidad, una empresa controla periódicamente ciertas componentes electrónicas que fabrica. Una de las características que se requiere evaluar es su longitud (medida en mm).  
 Interesa tener información sobre la **proporción** de esas componentes cuya longitud es menor a 80 mm.  
@@ -27,7 +28,9 @@ _Para realizar una descripción completa, debemos detallar **Variable en estudio
 - Parámetro de interés: proporción de componentes con longitud menor a 80 mm, $\pi$  
 - Estimador: $f_0$, frecuencia relativa de componentes con longitud menor a 80 mm en la muestra
   
+---
 ## ¡Vamos a R!
+---
 ## Asignar el directorio de trabajo  
 Recordar que en la función _'setwd'_, debemos indicar la ruta de la carpeta donde queremos guardar el espacio de trabajo y desde dónde leeremos las bases de datos.
 ```R
