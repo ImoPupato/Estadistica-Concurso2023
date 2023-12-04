@@ -27,7 +27,7 @@ _Para realizar una descripción completa, debemos detallar **Variable en estudio
 - Parámetro de interés: proporción de componentes con longitud menor a 80 mm, $\pi$  
 - Estimador: $f_0$, frecuencia relativa de componentes con longitud menor a 80 mm en la muestra
   
-### ¡Vamos a R!
+## ¡Vamos a R!
 ## Asignar el directorio de trabajo  
 Recordar que en la función _'setwd'_, debemos indicar la ruta de la carpeta donde queremos guardar el espacio de trabajo y desde dónde leeremos las bases de datos.
 ```R
@@ -108,7 +108,7 @@ Resumimos los resultados en una tabla que nos permita describir el conjunto de d
 </table>
 
 ### Análisis gráfico
-Diagrama de caja y bigotes (boxplot)
+**Diagrama de caja y bigotes (boxplot)**
 ```R
 boxplot(datos$longitud, # datos
         horizontal = TRUE, # boxplot horizontal
@@ -123,7 +123,7 @@ title(main = "Diagrama de caja y bigotes correspondiente a la longitud de los co
 </p>
 </div>
     
-Histograma de frecuencias
+**Histograma de frecuencias**
 ```R
 hist(datos$longitud, # datos
      breaks=10, #cantidad de intervalos
