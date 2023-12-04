@@ -3,8 +3,9 @@ Para certificar normas de calidad, una empresa controla periódicamente ciertas 
 Interesa tener información sobre la **proporción** de esas componentes cuya longitud es menor a 80 mm.  
 Para ello, se toma una **muestra aleatoria simple** de **100 componentes**, se le mide la **longitud** a cada una de ellas y se lleva a cabo un análisis estadístico.  
 _En negrita se encuentran indicadas las palabras claves necesarias para completar la descripción del problema_
+
 ### Descripción del problema
-- Variable:  longitud de las componentes (cuantitativa)  
+- Variable:  longitud de las componentes (cuantitativa, continua)  
 - Unidad: componente electrónica fabricados por dicha empresa  
 - Muestra: 100 componentes  
 - Población: todas las componentes electrónicas fabricadas por dicha empresa  
@@ -17,14 +18,29 @@ Recordar que en la función _'setwd'_, debemos indicar la ruta de la carpeta don
 ```R
 setwd("C:/Users/Aylen/Desktop/Estadistica-2023") #las barras deben ser las indicadas
 ```
-## Cargar los datos
+### Cargar los datos
 ```R
 library(readxl) # llamamos a la librería necesaria para leer el archivo de extensión .xlsx
 datos <- read_excel("datos problema.xlsx") # asignamos los datos al objeto "datos"
 ```
-## Explorar la tabla
+### Explorar la tabla
 ```R
-summary(datos)
+class(datos)
+class(datos$longitud)
+```
+### Proporción de componentes con longitud menor a 80 mm
+La frecuencia relativa ($f_0$) es el cociente entre el número de unidades que satisfacen el criterio y el total.  
+```R
+sum(datos$longitud>80)/length(datos$longitud)
+```
+_Entre las componentes analizadas, un 97% cumplen la presensión de tener una longitud de componentes menor a 80 mm._  
+### Estadísticas descriptivas
+```R
+summary(datos) #posición
+IQR(datos) # rango intercuartil
+var(datos) # variancia
+sd(datos$longitud) # desvío estándar
+sd(datos$longitud)/mean(datos) # coeficiente de variación
 ```
 Resumimos los resultados en una tabla que nos permita describir el conjunto de datos
 <table>
@@ -55,7 +71,9 @@ Resumimos los resultados en una tabla que nos permita describir el conjunto de d
         <tr>
             <td rowspan=1 align="center"> Máximo ($y_{max}$) </td>
             <td align="center"> 101.00 </td>
-        <tr>
+       </tbody>
+       <tbody>
+        <tr>   
             <td rowspan=7 align="center"> Dispersión </td>
             <td rowspan=1 align="center"> Variancia ($s^2$)</td>
             <td align="center"> 23.88 </td>
@@ -73,3 +91,25 @@ Resumimos los resultados en una tabla que nos permita describir el conjunto de d
             <td align="center"> 0.055 </td>
     </tbody>
 </table>
+
+### Análisis gráfico
+Diagrama de caja y bigotes (boxplot)
+```R
+boxplot(datos$longitud, # datos
+        horizontal = TRUE, # boxplot horizontal
+        xlab="Longitud de componente (mm)",# etiqueta del eje x
+        col = "lightgreen") # color
+title(main = "Diagrama de caja y bigotes correspondiente a la longitud de los componentes", # título
+      cex.main = 1) # tamaño de la letra
+```
+Histograma de frecuencias
+```R
+hist(datos$longitud, # datos
+     breaks=8, #cantidad de intervalos
+     ylim = c(0,40), # límites del eje y
+     col="lightblue", # color
+     ylab="Frecuencia", # etiqueta del eje y
+     xlab= "Longitod de componente (mm)", etiqueta del eje x
+     main= "Histograma correspondiente a la longitud de los componentes" # título
+     )
+```
