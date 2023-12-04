@@ -126,11 +126,11 @@ title(main = "Diagrama de caja y bigotes correspondiente a la longitud de los co
 Histograma de frecuencias
 ```R
 hist(datos$longitud, # datos
-     breaks=6, #cantidad de intervalos
+     breaks=10, #cantidad de intervalos
      ylim = c(0,40), # límites del eje y
      col="lightblue", # color
      ylab="Frecuencia", # etiqueta del eje y
-     xlab= "Longitod de componente (mm)", etiqueta del eje x
+     xlab= "Longitud de componente (mm)", etiqueta del eje x
      main= "Histograma correspondiente a la longitud de los componentes" # título
      )
 ```
