@@ -102,10 +102,16 @@ boxplot(datos$longitud, # datos
 title(main = "Diagrama de caja y bigotes correspondiente a la longitud de los componentes", # título
       cex.main = 1) # tamaño de la letra
 ```
+<div>
+<p style = 'text-align:center;'>
+<img src="https://github.com/ImoPupato/Estadistica-Concurso2023/blob/main/Boxplot.png">
+</p>
+</div>
+    
 Histograma de frecuencias
 ```R
 hist(datos$longitud, # datos
-     breaks=8, #cantidad de intervalos
+     breaks=6, #cantidad de intervalos
      ylim = c(0,40), # límites del eje y
      col="lightblue", # color
      ylab="Frecuencia", # etiqueta del eje y
@@ -113,3 +119,8 @@ hist(datos$longitud, # datos
      main= "Histograma correspondiente a la longitud de los componentes" # título
      )
 ```
+<div>
+<p style = 'text-align:center;'>
+<img src="https://github.com/ImoPupato/Estadistica-Concurso2023/blob/main/Histograma.png">
+</p>
+</div>
