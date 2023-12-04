@@ -6,14 +6,16 @@
 
 Cuando los datos provienen de un censo o estudio poblacional, luego de aplicar herramientas del análisis descriptivo _(Etapa A)_ se pasa directamente a las conclusiones _(Etapa C)_.  
 
-En el caso de contar con una muestra, los datos están incompletos en el sentido que no se cuenta con información de toda la población y, por ese motivo, a los resultados obtenidos del análisis descriptivo se los debe tomar como preliminares. El análisis se completa con herramientas inferenciales para generalizar las conclusiones a la población de referencia _(Etapa C)_. Estas herramientas, que también se asocian al análisis de los datos _(Etapa A)_.  
+En el caso de contar con una *muestra*, los datos están incompletos en el sentido que no se cuenta con información de toda la población y, por ese motivo, a los resultados obtenidos del análisis descriptivo se los debe tomar como *preliminares*. El análisis se completa con herramientas inferenciales para generalizar las conclusiones a la población de referencia _(Etapa C)_. Estas herramientas, que también se asocian al análisis de los datos _(Etapa A)_.  
+  
 En esta clase, a través de un ejemplo, aplicaremos las principales herramientas de análisis descriptivo univariado que hemos abordado en la teoría.
 
 ## Situación problema
 Para certificar normas de calidad, una empresa controla periódicamente ciertas componentes electrónicas que fabrica. Una de las características que se requiere evaluar es su longitud (medida en mm).  
 Interesa tener información sobre la **proporción** de esas componentes cuya longitud es menor a 80 mm.  
 Para ello, se toma una **muestra aleatoria simple** de **100 componentes**, se le mide la **longitud** a cada una de ellas y se lleva a cabo un análisis estadístico.  
-_En negrita se encuentran indicadas las palabras claves necesarias para completar la descripción del problema_
+_En negrita se encuentran indicadas las palabras claves necesarias para completar la descripción del problema._
+_Para realizar una descripción completa, debemos detallar Variable en estudio, Unidad experimental, Muestra, Población, Población estadística, Objetivo del estudio, Parámetro de interés y Estimador de dicho parámetro.  
 
 ### Descripción del problema
 - Variable:  longitud de las componentes (cuantitativa, continua)  
@@ -24,6 +26,7 @@ _En negrita se encuentran indicadas las palabras claves necesarias para completa
 - Objetivo: conocer la proporción de componentes cuya longitud es menor a 80 mm  
 - Parámetro de interés: proporción de componentes con longitud menor a 80 mm, $\pi$  
 - Estimador: $f_0$, frecuencia relativa de componentes con longitud menor a 80 mm en la muestra  
+### ¡Vamos a R!
 ## Asignar el directorio de trabajo  
 Recordar que en la función _'setwd'_, debemos indicar la ruta de la carpeta donde queremos guardar el espacio de trabajo y desde dónde leeremos las bases de datos.
 ```R
@@ -44,7 +47,7 @@ La frecuencia relativa ($f_0$) es el cociente entre el número de unidades que s
 ```R
 sum(datos$longitud>80)/length(datos$longitud)
 ```
-_Entre las componentes analizadas, un 97% cumplen la presensión de tener una longitud de componentes menor a 80 mm._  
+_Entre las componentes analizadas, un 97% cumplen la pretensión de tener una longitud menor a 80 mm._  
 ### Estadísticas descriptivas
 ```R
 summary(datos) #posición
@@ -53,7 +56,7 @@ var(datos) # variancia
 sd(datos$longitud) # desvío estándar
 sd(datos$longitud)/mean(datos) # coeficiente de variación
 ```
-Resumimos los resultados en una tabla que nos permita describir el conjunto de datos
+Resumimos los resultados en una tabla que nos permita describir el conjunto de datos:
 <table>
     <thead>
         <tr>
