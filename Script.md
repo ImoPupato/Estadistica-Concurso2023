@@ -6,8 +6,20 @@
 
 Cuando los datos provienen de un censo o estudio poblacional, luego de aplicar herramientas del análisis descriptivo _(Etapa A)_ podemos avanzar directamente hacia las conclusiones _(Etapa C)_.  
 
-En el caso de contar con una **muestra**, como los datos están incompletos en el sentido que no se cuenta con información de toda la población, debemos considerar como **preliminares** a los resultados de nuestro análisis. En próximas unidades, trabajaremos con herramientas inferenciales para generalizar las conclusiones a la población de referencia _(Etapa C)_. Estas herramientas, que también se asocian al análisis de los datos _(Etapa A)_.  
+En el caso de contar con una **muestra**, como los datos están incompletos en el sentido que no se cuenta con información de toda la población, debemos considerar como **preliminares** a los resultados de nuestro análisis. Al combinar con herramientas inferenciales podemos generalizar las conclusiones a la población de referencia _(Etapa C)_. Estas herramientas también se asocian al análisis de los datos _(Etapa A)_.  
+
+Muchas veces resulta de interés conocer el valor de un parámetro, para ello utilizamos una **estimación** del mismo. La estimación puede realizarse de manera puntual, informar un único valor a partir de una muestra aleatoria, o por intervalo de confianza que nos brindará un intervalo (a;b) que cubre al verdadero valor del parámetro con un nivel de confianza (1 - $\alpha$ ). Una estimación, entonces, es el valor **observado** del estimador, luego de haber realizado el muestreo. 
+
+<div align="center">
   
+| | Parámetro a estimar $\hat{\theta}$ | Estimador $\theta$ |
+|:---------------------------------:|:---------------------------------:|:---------------------------------:|
+|Promedio poblacional| μ | $\overline{y}$ |
+|Variancia poblacional| $σ^2$ | $s^2$ |
+|Proporción| π | $f_0$ |
+
+</div>  
+
 En esta clase, a través de un ejemplo, aplicaremos las principales herramientas de análisis descriptivo univariado que hemos abordado en la teoría.
 
 ---
@@ -49,16 +61,34 @@ class(datos$longitud)
 ### Estimación puntual de la proporción de componentes con longitud menor a 80 mm
 La frecuencia relativa ($f_0$) es el cociente entre el número de unidades que satisfacen el criterio y el total.  
 ```R
-sum(datos$longitud>80)/length(datos$longitud)
+sum(datos$longitud<80)/length(datos$longitud)
 ```
 _Entre las componentes analizadas, un 97% cumplen la pretensión de tener una longitud menor a 80 mm._  
+
 ### Estimación por intervalo de confianza de la proporción de componentes con longitud menor a 80 mm
-La ventaja de utilizar la estimación por intervalo de confianza es que tenemos, precisamente, una noción de la confianza de dicha estimación.
+Previamente, debemos fijar el nivel de confianza _(o riesgo)_ con la que vamos a construir dicho intervalo.  
+Cuando n es lo suficientemente grande sucede que: $f_0$~N($\pi$, $\sqrt(\frac{\pi(1-\pi)}{n})$ ).  
+Por lo tanto, el intervalo de confianza es:
+$IC_{\pi,(1-\alpha)}$ = $f_0$ $\pm$ $Z_{1-\frac{α}{2}}$ $\sqrt(\frac{f_0(1-f_0)}{n})$ 
 ```R
- DescTools::BinomCI(sum(datos$longitud>80)/length(datos$longitud), total, conf.level = 0.95, method = "clopper-pearson")
+DescTools::BinomCI(c(                          # vector
+                     sum(datos$longitud<80),   # cantidad de datos que cumplen con el requisito
+                     sum(datos$longitud>80)),  # cantidad de datos que no cumplen con el requisito
+                   length(datos$longitud),     # n, extensión de la muestra
+                   conf.level = 0.95,          # nivel de confianza
+                   method = "clopper-pearson") # método exacto
 ```
+Tenemos entonces: $IC_{\pi,0.95}$ = $(0.92,0.99)$  
+_Con un nivel de confianza del 95% el intervalo (0.006, 0.085) cubre al valor de la proporción de componentes, fabricadas en dicha empresa, con tienen una longitud menor a 80 mm_
 
+#### ¿Cómo se podría mejorar la estimación?
+- **Amplitud del intervalo**: Podemos reducir la amplitud del intervalor, aumentando la extensión de la muestra.
+- **Nivel de confianza**: Si no aumento el tamañano de la muestra, estoy aumentando la amplitud del intervalo y por lo tanto; aumentando el error.
+#### Error
+$E$ = $Z_{1-\frac{α}{2}}$ $\sqrt(\frac{f_0(1-f_0)}{n})$ 
 
+#### Determinación del tamaño muestral
+$n$ = $\frac{f_0(1-f_0)Z_{1-\frac{α}{2}}^2}{E^2}$ 
 ### Estadísticas descriptivas
 ```R
 summary(datos) #posición
