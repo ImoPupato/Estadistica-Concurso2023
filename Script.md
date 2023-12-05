@@ -46,12 +46,19 @@ datos <- read_excel("datos problema.xlsx") # asignamos los datos al objeto "dato
 class(datos)
 class(datos$longitud)
 ```
-### Proporción de componentes con longitud menor a 80 mm
+### Estimación puntual de la proporción de componentes con longitud menor a 80 mm
 La frecuencia relativa ($f_0$) es el cociente entre el número de unidades que satisfacen el criterio y el total.  
 ```R
 sum(datos$longitud>80)/length(datos$longitud)
 ```
 _Entre las componentes analizadas, un 97% cumplen la pretensión de tener una longitud menor a 80 mm._  
+### Estimación por intervalo de confianza de la proporción de componentes con longitud menor a 80 mm
+La ventaja de utilizar la estimación por intervalo de confianza es que tenemos, precisamente, una noción de la confianza de dicha estimación.
+```R
+ DescTools::BinomCI(sum(datos$longitud>80)/length(datos$longitud), total, conf.level = 0.95, method = "clopper-pearson")
+```
+
+
 ### Estadísticas descriptivas
 ```R
 summary(datos) #posición
