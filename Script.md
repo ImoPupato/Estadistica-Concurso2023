@@ -66,7 +66,7 @@ La frecuencia relativa ($f_0$) es el cociente entre el número de unidades que s
 ```R
 sum(datos$longitud<80)/length(datos$longitud)
 ```
-_Entre las componentes analizadas, un 97% cumplen la pretensión de tener una longitud menor a 80 mm._  
+_Entre las componentes analizadas, un 3% cumplen la pretensión de tener una longitud menor a 80 mm._  
 
 ### Estimación por intervalo de confianza de la proporción de componentes con longitud menor a 80 mm
 Previamente, debemos fijar el nivel de confianza _(o riesgo)_ con la que vamos a construir dicho intervalo.  
@@ -74,6 +74,9 @@ Previamente, debemos fijar el nivel de confianza _(o riesgo)_ con la que vamos a
 Cuando n es lo suficientemente grande sucede que: $f_0$~N($\pi$, $\sqrt(\frac{\pi(1-\pi)}{n})$ ).  
   
 Por lo tanto, el intervalo de confianza es: $IC_{\pi,(1-\alpha)}$ = $f_0$ $\pm$ $Z_{1-\frac{α}{2}}$ $\sqrt(\frac{f_0(1-f_0)}{n})$ 
+
+#### Error
+$E$ = $Z_{1-\frac{α}{2}}$ $\sqrt(\frac{f_0(1-f_0)}{n})$  
 
 ```R
 DescTools::BinomCI(c(                          # vector
@@ -83,15 +86,12 @@ DescTools::BinomCI(c(                          # vector
                    conf.level = 0.95,          # nivel de confianza
                    method = "clopper-pearson") # método exacto
 ```
-Tenemos entonces: $IC_{\pi,0.95}$ = $(0.92,0.99)$  
-_Con un nivel de confianza del 95% el intervalo (0.006, 0.085) cubre al valor de la proporción de componentes, fabricadas en dicha empresa, con tienen una longitud menor a 80 mm_
+Tenemos entonces: $IC_{\pi,0.95}$ = $(0.006,0.085)$  
+_Con un nivel de confianza del 95% el intervalo (0.006, 0.085) cubre al valor de la proporción de componentes, fabricadas en dicha empresa, cuya longitud es menor a 80 mm_
 
 #### ¿Cómo se podría mejorar la estimación?
 - **Amplitud del intervalo**: Podemos reducir la amplitud del intervalor, aumentando la extensión de la muestra.
 - **Nivel de confianza**: Si no aumento el tamañano de la muestra, estoy aumentando la amplitud del intervalo y por lo tanto; aumentando el error.
-
-#### Error
-$E$ = $Z_{1-\frac{α}{2}}$ $\sqrt(\frac{f_0(1-f_0)}{n})$  
 
 #### Determinación del tamaño muestral
 $n$ = $\frac{f_0(1-f_0)Z_{1-\frac{α}{2}}^2}{E^2}$  
