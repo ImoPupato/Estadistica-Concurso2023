@@ -20,6 +20,7 @@ Muchas veces resulta de interés conocer el valor de un parámetro, para ello ut
 
 </div>  
 
+  
 En esta clase, a través de un ejemplo, aplicaremos las principales herramientas de análisis descriptivo univariado que hemos abordado en la teoría.
 
 ---
@@ -27,9 +28,11 @@ En esta clase, a través de un ejemplo, aplicaremos las principales herramientas
 Para certificar normas de calidad, una empresa controla periódicamente ciertas componentes electrónicas que fabrica. Una de las características que se requiere evaluar es su longitud (medida en mm).  
 Interesa tener información sobre la **proporción** de esas componentes cuya longitud es menor a 80 mm.  
 Para ello, se toma una **muestra aleatoria simple** de **100 componentes**, se le mide la **longitud** a cada una de ellas y se lleva a cabo un análisis estadístico.  
-_En negrita se encuentran indicadas las palabras claves necesarias para completar la descripción del problema._  
-_Para realizar una descripción completa, debemos detallar **Variable en estudio**, **Unidad experimental**, **Muestra**, **Población**, **Población estadística**, **Objetivo** del estudio, **Parámetro** de interés y **Estimador** de dicho parámetro.  
+_En negrita se encuentran indicadas las palabras claves necesarias para completar la descripción del problema._ 
+   
+_Para realizar una descripción completa, debemos detallar **Variable en estudio**, **Unidad experimental**, **Muestra**, **Población**, **Población estadística**, **Objetivo** del estudio, **Parámetro** de interés y **Estimador** de dicho parámetro_.
 
+---
 ### Descripción del problema
 - Variable:  longitud de las componentes (cuantitativa, continua)  
 - Unidad: componente electrónica fabricados por dicha empresa  
@@ -67,9 +70,11 @@ _Entre las componentes analizadas, un 97% cumplen la pretensión de tener una lo
 
 ### Estimación por intervalo de confianza de la proporción de componentes con longitud menor a 80 mm
 Previamente, debemos fijar el nivel de confianza _(o riesgo)_ con la que vamos a construir dicho intervalo.  
+  
 Cuando n es lo suficientemente grande sucede que: $f_0$~N($\pi$, $\sqrt(\frac{\pi(1-\pi)}{n})$ ).  
-Por lo tanto, el intervalo de confianza es:
-$IC_{\pi,(1-\alpha)}$ = $f_0$ $\pm$ $Z_{1-\frac{α}{2}}$ $\sqrt(\frac{f_0(1-f_0)}{n})$ 
+  
+Por lo tanto, el intervalo de confianza es: $IC_{\pi,(1-\alpha)}$ = $f_0$ $\pm$ $Z_{1-\frac{α}{2}}$ $\sqrt(\frac{f_0(1-f_0)}{n})$ 
+
 ```R
 DescTools::BinomCI(c(                          # vector
                      sum(datos$longitud<80),   # cantidad de datos que cumplen con el requisito
@@ -84,11 +89,13 @@ _Con un nivel de confianza del 95% el intervalo (0.006, 0.085) cubre al valor de
 #### ¿Cómo se podría mejorar la estimación?
 - **Amplitud del intervalo**: Podemos reducir la amplitud del intervalor, aumentando la extensión de la muestra.
 - **Nivel de confianza**: Si no aumento el tamañano de la muestra, estoy aumentando la amplitud del intervalo y por lo tanto; aumentando el error.
+
 #### Error
-$E$ = $Z_{1-\frac{α}{2}}$ $\sqrt(\frac{f_0(1-f_0)}{n})$ 
+$E$ = $Z_{1-\frac{α}{2}}$ $\sqrt(\frac{f_0(1-f_0)}{n})$  
 
 #### Determinación del tamaño muestral
-$n$ = $\frac{f_0(1-f_0)Z_{1-\frac{α}{2}}^2}{E^2}$ 
+$n$ = $\frac{f_0(1-f_0)Z_{1-\frac{α}{2}}^2}{E^2}$  
+
 ### Estadísticas descriptivas
 ```R
 summary(datos) #posición
