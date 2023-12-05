@@ -16,7 +16,7 @@ Muchas veces resulta de interés conocer el valor de un parámetro, para ello ut
 |:---------------------------------:|:---------------------------------:|:---------------------------------:|
 |Promedio poblacional| μ | $\overline{y}$ |
 |Variancia poblacional| $σ^2$ | $s^2$ |
-|Proporción| π | $f_0$ |
+|Proporción| π | $f_r$ |
 
 </div>  
 
