@@ -12,7 +12,7 @@ Muchas veces resulta de interés conocer el valor de un parámetro, para ello ut
 
 <div align="center">
   
-| | Parámetro a estimar $\hat{\theta}$ | Estimador $\theta$ |
+| | Parámetro a estimar $\theta$  | Estimador $\hat{\theta}$ |
 |:---------------------------------:|:---------------------------------:|:---------------------------------:|
 |Promedio poblacional| μ | $\overline{y}$ |
 |Variancia poblacional| $σ^2$ | $s^2$ |
