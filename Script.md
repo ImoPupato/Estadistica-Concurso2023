@@ -35,7 +35,7 @@ _Para realizar una descripción completa, debemos detallar **Variable en estudio
 ---
 ### Descripción del problema
 - Variable:  longitud de las componentes (cuantitativa, continua)  
-- Unidad: componente electrónica fabricados por dicha empresa  
+- Unidad: componente electrónica fabricadas por dicha empresa  
 - Muestra: 100 componentes  
 - Población: todas las componentes electrónicas fabricadas por dicha empresa  
 - Población estadística: todas las longitudes de las componentes  
